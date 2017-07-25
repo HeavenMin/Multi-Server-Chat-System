@@ -1,11 +1,8 @@
 package myServer2;
 
 /*
- * Name : Min Gao
- * COMP90015 Distributed Systems 2016 SM2 
- * Project1-Multi-Server Chat System  
- * Login Name : ming1 
- * Student Number : 773090 
+ * AUTHOR : Min Gao
+ * Project1-Multi-Server Chat System
  */
 
 import java.io.BufferedReader;
@@ -24,7 +21,7 @@ public class Client {
 	private BufferedWriter writer;
 	private BufferedReader reader;
 	private boolean isQuitRequestSend;
-	
+
 	public Client(String clientid, String room, String serverid, Socket clientSocket) {
 		this.clientid = clientid;
 		this.room = room;
@@ -36,13 +33,13 @@ public class Client {
 			reader = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream(), "UTF-8"));
 			writer = new BufferedWriter(new OutputStreamWriter(
-					clientSocket.getOutputStream(), "UTF-8"));	
+					clientSocket.getOutputStream(), "UTF-8"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Client(String clientid, String room, String ownedRoom, String serverid, Socket clientSocket) {
 		this.clientid = clientid;
 		this.room = room;
@@ -54,13 +51,13 @@ public class Client {
 			reader = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream(), "UTF-8"));
 			writer = new BufferedWriter(new OutputStreamWriter(
-					clientSocket.getOutputStream(), "UTF-8"));	
+					clientSocket.getOutputStream(), "UTF-8"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String getClientid() {
 		return clientid;
 	}
@@ -76,7 +73,7 @@ public class Client {
 	public String getServerid() {
 		return serverid;
 	}
-	
+
 	public Socket getClientSocket() {
 		return clientSocket;
 	}
@@ -88,7 +85,7 @@ public class Client {
 		}
 		return null;
 	}
-	
+
 	public void write(String msg) {
 		try {
 			writer.write(msg);
@@ -105,16 +102,16 @@ public class Client {
 			//e.printStackTrace();
 		}
 	}
-	
+
 	public synchronized void createRoom(String roomid) {
 		this.room = roomid;
 		this.ownedRoom = roomid;
 	}
-	
+
 	public synchronized void changeRoom(String roomid) {
 		this.room = roomid;
 	}
-	
+
 	public synchronized void deleteRoom() {
 		this.ownedRoom = null;
 	}

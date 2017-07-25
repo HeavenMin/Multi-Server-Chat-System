@@ -1,11 +1,8 @@
 package myServer2;
 
 /*
- * Name : Min Gao
- * COMP90015 Distributed Systems 2016 SM2 
- * Project1-Multi-Server Chat System  
- * Login Name : ming1 
- * Student Number : 773090 
+ * AUTHOR : Min Gao
+ * Project1-Multi-Server Chat System
  */
 
 import java.io.FileInputStream;
@@ -13,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ConfLoader {
-	
+
 	public Conf loadConf(String serverid, String confPath) {
 		Conf conf = null;
 		String[] serverConf = readServerConf(confPath);
@@ -27,7 +24,7 @@ public class ConfLoader {
 		}
 		return conf;
 	}
-	
+
 	//initialize other server state
 	public void initializeServerState(String serverid, String confPath) {
 		String[] serverConf = readServerConf(confPath);
@@ -39,7 +36,7 @@ public class ConfLoader {
 			}
 		}
 	}
-	
+
 	private String[] readServerConf(String confPath) {
 		String[] serverConf = new String[totalServerNum(confPath)];
 		int i = 0;
@@ -50,13 +47,13 @@ public class ConfLoader {
 				i++;
 			}
 			inputServerConf.close();
-		} 
+		}
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return serverConf;
 	}
-	
+
 	private int totalServerNum(String confPath) {
 		int i= 0;
 		try {
@@ -66,7 +63,7 @@ public class ConfLoader {
 				i++;
 			}
 			inputServerConf.close();
-		} 
+		}
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
